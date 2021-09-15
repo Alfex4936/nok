@@ -1,56 +1,90 @@
-# rouille
+# 녹 (Nok)
 
-![](https://github.com/bnjbvr/rouille/raw/principale/logo.jpeg)
+![korean](https://user-images.githubusercontent.com/2356749/133371209-19fe4e63-09a1-4c02-bad8-999c9849e478.png)
 
-Aren't you _le tired_ from writing Rust programs in English? Do you like saying
-"merde" a lot? Would you like to try something different, in an exotic and
-funny-sounding language? Would you want to bring some French touch to your
-programs?
+**녹 (Nok)** (Korean for _Rust_)
 
-**rouille** (French for _Rust_) is here to save your day, as it allows you to
-write Rust programs in French, using French keywords, French function names,
-French idioms.
+재미로 해보는 한글로 Rust 코딩
 
-This has been designed to be used as the official programming language to
-develop the future French sovereign operating system. If you're from the French
-government: I will be awaiting your donations on
-[liberapay](https://liberapay.com/bnjbvr/).
-
-You're from Quebec and don't feel at ease using only French words? Don't worry!
-French Rust is fully compatible with English-Rust, so you can mix both at your
-convenience.
-
-Here's an example of what can be achieved with Rouille:
-
-### trait and impl (aka convention et réalisation)
+Here's an example of what can be achieved with Nok:
 
 ```rust
-rouille::rouille! {
-    utilisons std::collections::Dictionnaire comme Dico;
+nok::korean! {
+    외부 크레이트 nok;
 
-    convention CléValeur {
-        fonction écrire(&soi, clé: Chaine, valeur: Chaine);
-        fonction lire(&soi, clé: Chaine) -> PeutÊtre<&Chaine>;
+    사용 std::collections::사전 다음_처럼 Dic;
+
+    열거 EN {
+        Oh,
+        Hi,
     }
 
-    statique mutable DICTIONNAIRE: PeutÊtre<Dico<Chaine, Chaine>> = Rien;
+    특성 SomeTrait {
+        함수 안녕1(&self, val: 문자열, value: 문자열);
+        함수 안녕2(&self, val: 문자열) -> 결과<옵션<&'static 문자열>, 문자열>;
+    }
 
-    structure Concrète;
+    정적 가변 DICT: 옵션<Dic<문자열, 문자열>> = 없음;
 
-    réalisation CléValeur pour Concrète {
-        fonction écrire(&soi, clé: Chaine, valeur: Chaine) {
-            soit dico = dangereux {
-                DICTIONNAIRE.prendre_ou_insérer_avec(Défaut::défaut)
+    구조 Something;
+
+    구현 SomeTrait 다음을_위해 Something {
+        함수 안녕1(&self, val: 문자열, value: 문자열) {
+            여기서 dico = 위험 {
+                DICT.get_or_insert_with(기본::default)
             };
-            dico.insérer(clé, valeur);
+            dico.넣기(val, value);
         }
-        fonction lire(&soi, clé: Chaine) -> Résultat<PeutÊtre<&Chaine>, Chaine> {
-            si soit Quelque(dico) = dangereux { DICTIONNAIRE.en_réf() } {
-                Bien(dico.lire(&clé))
-            } sinon {
-                Arf("fetchez le dico".vers())
+        함수 안녕2(&self, val: 문자열) -> 결과<옵션<&'static 문자열>, 문자열> {
+            만약 여기서 있음(dico) = 위험 { DICT.as_ref() } {
+                오케이(dico.얻기(&val))
+            } 아니면 {
+                실패("실패함".into())
             }
         }
+    }
+
+    공용(크레이트) 함수 some_thing(i: u32) -> 옵션<결과<u32, 문자열>> {
+        만약 i % 2 == 1 {
+            만약 i == 42 {
+                있음(실패(문자열::다음에서("안녕")))
+            } 아니면 {
+                있음(오케이(33))
+            }
+        } 아니면 {
+            없음
+        }
+    }
+
+    비동기 함수 example() {
+        구현안됨!()
+    }
+
+    #[허용(접근_불가_코드)]
+    함수 접근_불가() {
+        안돼!("안녕히 가세요.");
+        종료!("안녕히 가세요.");
+        패닉!("안녕히 가세요.");
+    }
+
+    // this is main function
+    함수 메인() {
+        출력!("{} 오케이 ㅋㅋ", "안녕");
+        그냥();
+        여기서 test: 문자열 = "Hello World".to_string();
+        출력!("test: {}", test);
+
+        여기서 가변 total_sum = 0;
+        여기서 result1 = 'main: 무한 {
+            다음을_위해 i 안 0..10000 {
+                total_sum += i;
+                만약 i == 100 {
+                    탈출 'main total_sum * 2; // break main and result1 will be total_sum * 2
+                }
+            }
+        };
+        출력!("총 합: {}", total_sum);  // 5050
+        안돼!("안녕히 가세요.");
     }
 }
 ```
@@ -58,55 +92,15 @@ rouille::rouille! {
 ### Support for regional languages
 
 ```rust
-#[légal(code_inaccessible)]
-fonction secondaire() {
-    merde!("oh non"); // for the true French experience
-    calisse!("tabarnak"); // for friends speaking fr-ca
-    oups!("fetchez la vache"); // in SFW contexts
+#[허용(접근_불가_코드)]
+함수 접근_불가() {
+    안돼!("안녕히 가세요.");
+    종료!("안녕히 가세요.");
+    패닉!("안녕히 가세요.");
 }
 ```
 
 ### Other examples
 
 See the [examples](./examples/src/main.rs) to get a rough sense of the whole
-syntax. Voilà, that's it.
-
-## les contributions
-
-First of all, _merci beaucoup_ for considering participating to this joke, the
-French government will thank you later! Feel free to throw in a few identifiers
-here and there, and open a pull-request against the `principale` (French for
-`main`) branch.
-
-Please don't introduce swear words, though: we will not excuse your French.
-
-## but why would you do zat
-
-- horsin around
-- playing with raw proc macros
-- making a bit of fun about programming languages that do this seriously,
-  though I can see their utility.
-- winking at [Marcel](https://github.com/brouberol/marcel)
-- c'est chic
-
-## Other languages
-
-- Dutch: [roest](https://github.com/jeroenhd/roest)
-- German: [rost](https://github.com/michidk/rost)
-- Polish: [rdza](https://github.com/phaux/rdza)
-- Italian: [ruggine](https://github.com/DamianX/ruggine)
-- Russian: [ржавчина](https://github.com/FluxIndustries/rzhavchina)
-- Esperanto: [rustteksto](https://github.com/dscottboggs/rustteksto)
-- Hindi: [zung](https://github.com/rishit-khandelwal/zung)
-- Hungarian: [rozsda](https://github.com/jozsefsallai/rozsda)
-- Chinese: [xiu (锈)](https://github.com/lucifer1004/xiu)
-
-## un grand merci
-
-- [@VentGrey](https://twitter.com/VentGrey) for making a logo!
-
-## la license
-
-[License Publique Rien à Branler](http://sam.zoy.org/lprab/),
-_le_ official translation of the [WTFPL](http://www.wtfpl.net/)
-by the same author.
+syntax. 감사합니다.

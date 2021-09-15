@@ -1,85 +1,106 @@
-rouille::rouille! {
-    externe cagette rouille;
+nok::korean! {
+    외부 크레이트 nok;
 
-    utilisons std::collections::Dictionnaire comme Dico;
+    사용 std::collections::사전 다음_처럼 Dic;
 
-    convention CléValeur {
-        fonction écrire(&soi, clé: Chaine, valeur: Chaine);
-        fonction lire(&soi, clé: Chaine) -> Résultat<PeutÊtre<&Chaine>, Chaine>;
+    열거 EN {
+        Oh,
+        Hi,
     }
 
-    statique mutable DICTIONNAIRE: PeutÊtre<Dico<Chaine, Chaine>> = Rien;
+    특성 SomeTrait {
+        함수 안녕1(&self, val: 문자열, value: 문자열);
+        함수 안녕2(&self, val: 문자열) -> 결과<옵션<&'static 문자열>, 문자열>;
+    }
 
-    structure Concrète;
+    정적 가변 DICT: 옵션<Dic<문자열, 문자열>> = 없음;
 
-    réalisation CléValeur pour Concrète {
-        fonction écrire(&soi, clé: Chaine, valeur: Chaine) {
-            soit dico = dangereux {
-                DICTIONNAIRE.prendre_ou_insérer_avec(Défaut::défaut)
+    구조 Something;
+
+    구현 SomeTrait 다음을_위해 Something {
+        함수 안녕1(&self, val: 문자열, value: 문자열) {
+            여기서 dico = 위험 {
+                DICT.get_or_insert_with(기본::default)
             };
-            dico.insérer(clé, valeur);
+            dico.넣기(val, value);
         }
-        fonction lire(&soi, clé: Chaine) -> Résultat<PeutÊtre<&Chaine>, Chaine> {
-            si soit Quelque(dico) = dangereux { DICTIONNAIRE.en_réf() } {
-                Bien(dico.lire(&clé))
-            } sinon {
-                Arf("fetchez le dico".vers())
+        함수 안녕2(&self, val: 문자열) -> 결과<옵션<&'static 문자열>, 문자열> {
+            만약 여기서 있음(dico) = 위험 { DICT.as_ref() } {
+                오케이(dico.얻기(&val))
+            } 아니면 {
+                실패("실패함".into())
             }
         }
     }
 
-    public(cagette) fonction peut_etre(i: u32) -> PeutÊtre<Résultat<u32, Chaine>> {
-        si i % 2 == 1 {
-            si i == 42 {
-                Quelque(Arf(Chaine::depuis("merde")))
-            } sinon {
-                Quelque(Bien(33))
+    공용(크레이트) 함수 some_thing(i: u32) -> 옵션<결과<u32, 문자열>> {
+        만약 i % 2 == 1 {
+            만약 i == 42 {
+                있음(실패(문자열::다음에서("안녕")))
+            } 아니면 {
+                있음(오케이(33))
             }
-        } sinon {
-            Rien
+        } 아니면 {
+            없음
         }
     }
 
-    asynchrone fonction exemple() {
+    비동기 함수 example() {
+        구현안됨!()
     }
 
-    asynchrone fonction exemple2() {
-        exemple().attend;
-    }
+    함수 그냥() {
+        여기서 가변 x = 31;
 
-    fonction principale() {
-        soit mutable x = 31;
-
-        selon x {
+        매치 x {
             42 => {
-                affiche!("omelette du fromage")
+                출력!("42 네요.")
             }
-            _ => affiche!("voila")
+            _ => 출력!("여기로 옴")
         }
 
-        pour i de 0..10 {
-            soit val = boucle {
-                arrête i;
+        다음을_위해 i 안 0..10 {
+            여기서 val = 무한 {
+                탈출 i;
             };
 
-            tant que x < val {
+            조건_반복 아니 x < val {
                 x += 1;
             }
 
-            x = si soit Quelque(resultat) = peut_etre(i) {
-                resultat.déballer()
-            } sinon {
+            x = 만약 여기서 있음(ok) = some_thing(i) {
+                ok.꺼내기()
+            } 아니면 {
                 12
             };
         }
 
-        //secondaire();
     }
 
-    #[légal(code_inaccessible)]
-    fonction secondaire() {
-        merde!("oh non"); // for the true French experience
-        calisse!("tabernacle"); // for friends speaking fr-ca
-        oups!("fetchez la vache"); // in SFW contexts
+    #[허용(접근_불가_코드)]
+    함수 접근_불가() {
+        안돼!("안녕히 가세요.");
+        종료!("안녕히 가세요.");
+        패닉!("안녕히 가세요.");
+    }
+
+    // this is main function
+    함수 메인() {
+        출력!("{} 오케이 ㅋㅋ", "안녕");
+        그냥();
+        여기서 test: 문자열 = "Hello World".to_string();
+        출력!("test: {}", test);
+
+        여기서 가변 total_sum = 0;
+        여기서 result1 = 'main: 무한 {
+            다음을_위해 i 안 0..10000 {
+                total_sum += i;
+                만약 i == 100 {
+                    탈출 'main total_sum * 2; // break main and result1 will be total_sum * 2
+                }
+            }
+        };
+        출력!("총 합: {}", total_sum);  // 5050
+        안돼!("안녕히 가세요.");
     }
 }
