@@ -1,12 +1,18 @@
 # 녹 (Nok)
 
-![korean](https://user-images.githubusercontent.com/2356749/133371209-19fe4e63-09a1-4c02-bad8-999c9849e478.png)
+![logo](logo.png)
 
 **녹 (Nok)** (Korean for _Rust_)
 
-재미로 해보는 한글로 Rust 코딩
+Aren't you 피곤 from writing Rust programs in English? Do you like saying "시발" a lot? Would you like to try something different, in an exotic and funny-sounding language? Would you want to bring some Korean touch to your programs?
 
-Here's an example of what can be achieved with Nok:
+nok (Korean for Rust) is here to save your day, as it allows you to write Rust programs in Korean, using Korean keywords, Korean function names, Korean idioms.
+
+You don't feel at ease using only Korean words? Don't worry! Korean Rust is fully compatible with English-Rust, so you can mix both at your convenience.
+
+Here's an example of what can be achieved with nok:
+
+## trait and impl (특성과 구현)
 
 ```rust
 nok::korean! {
@@ -102,5 +108,30 @@ nok::korean! {
 
 ### Other examples
 
+![korean](https://user-images.githubusercontent.com/2356749/133371209-19fe4e63-09a1-4c02-bad8-999c9849e478.png)
+
 See the [examples](./examples/src/main.rs) to get a rough sense of the whole
-syntax. 감사합니다.
+syntax.
+
+## 다른 언어
+
+- 프랑스어: [rouille](https://github.com/bnjbvr/rouille)
+- 네덜란드어: [roest](https://github.com/jeroenhd/roest)
+- 독일어: [rost](https://github.com/michidk/rost)
+- 폴란드어: [rdza](https://github.com/phaux/rdza)
+- 이탈리아어: [ruggine](https://github.com/DamianX/ruggine)
+- 러시아어: [ржавчина](https://github.com/FluxIndustries/rzhavchina)
+- 에스페란토: [rustteksto](https://github.com/dscottboggs/rustteksto)
+- 힌디어: [zung](https://github.com/rishit-khandelwal/zung)
+- 헝가리어: [rozsda](https://github.com/jozsefsallai/rozsda)
+- 중국어: [xiu (锈)](https://github.com/lucifer1004/xiu)
+- 스페인어: [oxido](https://github.com/fdschonborn/oxido)
+- 핀란드어: [ruoste](https://github.com/vkoskiv/ruoste)
+- 아랍어: [sada](https://github.com/LAYGATOR/sada)
+- 터키어: [pas](https://github.com/ekimb/pas)
+- 베트남어: [gỉ](https://github.com/Huy-Ngo/gir)
+
+## 라이선스
+
+[WTFPL](www.wtfpl.net)의 [OLIS](https://olis.or.kr/license/Detailselect.do?lId=1236&mapCode=010183&lType=spdx) 번역판을 약간 변형하여 사용.
+
